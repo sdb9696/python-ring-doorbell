@@ -5,7 +5,7 @@ from uuid import uuid4 as uuid
 from requests_oauthlib import OAuth2Session
 from oauthlib.oauth2 import LegacyApplicationClient, TokenExpiredError
 from ring_doorbell.const import OAuth, API_VERSION, TIMEOUT
-
+from json import dumps as json_dumps
 
 class Auth:
     """A Python Auth class for Ring"""
@@ -87,6 +87,13 @@ class Auth:
         if method == "POST":
             if json is not None:
                 kwargs["json"] = json
+            if data is not None:
+                kwargs["data"] = data
+
+        if method == "PATCH":
+            # PATCH method of requests library does not have a json argument
+            if json is not None:
+                kwargs["data"] = json_dumps(json)
             if data is not None:
                 kwargs["data"] = data
 

@@ -20,11 +20,11 @@ def otp_callback():
 
 def main():
     if cache_file.is_file():
-        auth = Auth("MyProject/1.0", json.loads(cache_file.read_text()), token_updated)
+        auth = Auth("RingAPI2023/1.0", json.loads(cache_file.read_text()), token_updated)
     else:
         username = input("Username: ")
         password = getpass.getpass("Password: ")
-        auth = Auth("MyProject/1.0", None, token_updated)
+        auth = Auth("RingAPI2023/1.0", None, token_updated)
         try:
             auth.fetch_token(username, password)
         except MissingTokenError:
@@ -43,6 +43,12 @@ def main():
     print(doorbells)
     print(chimes)
     print(stickup_cams)
+
+    for dev in stickup_cams + doorbells:
+        if dev.name == "60 Front Door":
+            # turn on lights on floodlight cam
+            if dev.has_capability("motion_detection"):
+                dev.motion_detection = not dev.motion_detection
 
 
 if __name__ == "__main__":
