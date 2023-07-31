@@ -44,12 +44,5 @@ def main():
     print(chimes)
     print(stickup_cams)
 
-    for dev in stickup_cams + doorbells:
-        if dev.name == "60 Front Door":
-            # turn on lights on floodlight cam
-            if dev.has_capability("motion_detection"):
-                dev.motion_detection = not dev.motion_detection
-
-
 if __name__ == "__main__":
     main()

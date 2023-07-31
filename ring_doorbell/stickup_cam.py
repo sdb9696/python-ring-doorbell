@@ -151,4 +151,3 @@ class RingStickUpCam(RingDoorBell):
         self._ring.query(url, extra_params=params, method="PUT")
         self._ring.update_devices()
         return True
-
