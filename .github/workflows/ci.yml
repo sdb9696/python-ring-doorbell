@@ -22,7 +22,8 @@ jobs:
       - name: Lint with tox
         run: |
           tox
-        env: lint
+        env: 
+          TOXENV: lint
 
   tests:
     name: tests
