@@ -20,7 +20,9 @@ def otp_callback():
 
 def main():
     if cache_file.is_file():
-        auth = Auth("RingAPI2023/1.0", json.loads(cache_file.read_text()), token_updated)
+        auth = Auth(
+            "RingAPI2023/1.0", json.loads(cache_file.read_text()), token_updated
+        )
     else:
         username = input("Username: ")
         password = getpass.getpass("Password: ")
@@ -43,6 +45,7 @@ def main():
     print(doorbells)
     print(chimes)
     print(stickup_cams)
+
 
 if __name__ == "__main__":
     main()

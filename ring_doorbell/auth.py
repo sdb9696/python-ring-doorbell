@@ -2,10 +2,11 @@
 # vim:sw=4:ts=4:et:
 """Python Ring Auth Class."""
 from uuid import uuid4 as uuid
+from json import dumps as json_dumps
 from requests_oauthlib import OAuth2Session
 from oauthlib.oauth2 import LegacyApplicationClient, TokenExpiredError
 from ring_doorbell.const import OAuth, API_VERSION, TIMEOUT
-from json import dumps as json_dumps
+
 
 class Auth:
     """A Python Auth class for Ring"""

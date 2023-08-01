@@ -209,6 +209,7 @@ def test_light_groups(ring):
     # Attempt setting lights to invalid value
     group.lights = 30
 
+
 def test_motion_detection_enable(ring, mock_ring_requests):
     dev = ring.devices()["doorbots"][0]
 

@@ -461,11 +461,12 @@ class RingDoorBell(RingGeneric):
         return False
 
     def _motion_detection_state(self):
-        if "settings" in self._attrs and "motion_detection_enabled" in self._attrs.get("settings"):
+        if "settings" in self._attrs and "motion_detection_enabled" in self._attrs.get(
+            "settings"
+        ):
             return self._attrs.get("settings")["motion_detection_enabled"]
-        else:
-            return None
-    
+        return None
+
     @property
     def motion_detection(self):
         """Return motion detection enabled state."""
@@ -480,11 +481,16 @@ class RingDoorBell(RingGeneric):
             return False
 
         if self._motion_detection_state() is None:
-            _LOGGER.warn("%s", MSG_EXPECTED_ATTRIBUTE_NOT_FOUND.format("settings[motion_detection_enabled]"))
+            _LOGGER.warning(
+                "%s",
+                MSG_EXPECTED_ATTRIBUTE_NOT_FOUND.format(
+                    "settings[motion_detection_enabled]"
+                ),
+            )
             return False
-        
+
         url = SETTINGS_ENDPOINT.format(self.id)
-        payload = { "motion_settings": { "motion_detection_enabled": state }} 
+        payload = {"motion_settings": {"motion_detection_enabled": state}}
 
         self._ring.query(url, method="PATCH", json=payload)
         self._ring.update_devices()
