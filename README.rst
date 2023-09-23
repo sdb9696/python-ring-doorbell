@@ -3,15 +3,23 @@ Python Ring Door Bell
 =====================
 
 .. image:: https://badge.fury.io/py/ring-doorbell.svg
+    :alt: PyPI Version
     :target: https://badge.fury.io/py/ring-doorbell
 
-.. image:: https://travis-ci.org/tchellomello/python-ring-doorbell.svg?branch=master
-    :target: https://travis-ci.org/tchellomello/python-ring-doorbell
+.. image:: https://github.com/tchellomello/python-ring-doorbell/actions/workflows/ci.yml/badge.svg?branch=master
+    :alt: Build Status
+    :target: https://github.com/tchellomello/python-ring-doorbell/actions/workflows/ci.yml?branch=master
 
 .. image:: https://coveralls.io/repos/github/tchellomello/python-ring-doorbell/badge.svg?branch=master
+    :alt: Coverage
     :target: https://coveralls.io/github/tchellomello/python-ring-doorbell?branch=master
 
+.. image:: https://readthedocs.org/projects/python-ring-doorbell/badge/?version=latest
+    :alt: Documentation Status
+    :target: https://python-ring-doorbell.readthedocs.io/?badge=latest
+
 .. image:: https://img.shields.io/pypi/pyversions/ring-doorbell.svg
+    :alt: Py Versions
     :target: https://pypi.python.org/pypi/ring-doorbell
 
 *Looking for maintainers* 

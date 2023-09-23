@@ -2,6 +2,7 @@ name: CI
 
 on:
   push:
+    branches: ["master"]
   pull_request:
     branches: ["master"]
 
@@ -20,12 +21,33 @@ jobs:
       - name: "Install dependencies"
         run: |
           python -m pip install --upgrade pip
-          pip install -U tox
+          pip install -U poetry tox
       - name: Lint with tox
         run: |
           tox
         env: 
           TOXENV: lint
+
+  docs:
+    name: "Build docs"
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11"]
+    steps:
+      - uses: "actions/checkout@v2"
+      - uses: "actions/setup-python@v2"
+        with:
+          python-version: "${{ matrix.python-version }}"
+      - name: "Install dependencies"
+        run: |
+          python -m pip install --upgrade pip
+          pip install -U poetry tox
+      - name: Make docs with tox
+        run: |
+          tox
+        env: 
+          TOXENV: docs
 
   tests:
     name: tests
@@ -48,7 +70,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -U tox coveralls
+          pip install -U poetry tox coveralls
       - name: Prepare toxenv
         id: toxenv
         run: |
