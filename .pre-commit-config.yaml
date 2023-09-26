@@ -19,13 +19,10 @@ repos:
     types: [python]
     require_serial: true
     files: ^ring_doorbell/
-    args:
-      - --rcfile=pylintrc
 
 - repo: https://github.com/python/black
   rev: 23.3.0
   hooks:
   - id: black
     files: ^ring_doorbell/|^tests/|^test.py|^scripts/
-    args:
-      - --check
+

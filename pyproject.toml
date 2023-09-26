@@ -21,9 +21,22 @@ classifiers = [
     "Topic :: Home Automation",
     "Topic :: Software Development :: Libraries :: Python Modules"
 ]
+packages = [
+    { include = "ring_doorbell" },
+    { include = "tests", format = "sdist" },
+]
+include = [
+    "LICENSE", 
+    "CONTRIBUTING.rst", 
+    "CHANGELOG.rst",
+    "scripts/ringcli.py"
+]
 
 [tool.poetry.urls]
 "Bug Tracker" = "https://github.com/tchellomello/python-ring-doorbell/issues"
+
+[tool.poetry.scripts]
+ring-doorbell = "ring_doorbell.cli:cli"
 
 [tool.poetry.dependencies]
 python = "^3.8"
@@ -47,10 +60,26 @@ pylint = "*"
 pytest = "*"
 pytest-cov = "*"
 requests-mock = "*"
+sphinx-github-changelog = "^1.2.1"
+
+[tool.poetry.group.tox.dependencies]
 tox = "*"
 
 [tool.poetry.extras]
 docs = ["sphinx", "sphinx_rtd_theme", "sphinxcontrib-programoutput", "docutils"]
+
+[tool.pytest.ini_options]
+testpaths = "tests"
+norecursedirs = ".git"
+
+[tool.pylint]
+disable = ["format", "locally-disabled", "duplicate-code", "cyclic-import", "unused-argument",
+  "global-statement","too-many-arguments", "too-many-branches", "too-many-instance-attributes",
+  "too-many-locals", "too-many-public-methods", "too-many-return-statements", "too-many-statements",
+  "too-many-lines", "too-few-public-methods", "abstract-method", "consider-using-f-string",
+  "import-error",
+]
+overgeneral-exceptions = ["builtins.Exception"]
 
 [build-system]
 requires = ["poetry-core"]

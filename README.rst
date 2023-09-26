@@ -206,7 +206,7 @@ Controlling a Light Group
 
 How to contribute
 -----------------
-See CONTRIBUTING.rst
+See our `Contributing Page <https://python-ring-doorbell.readthedocs.io/contributing.html>`_.
 
 
 Credits && Thanks

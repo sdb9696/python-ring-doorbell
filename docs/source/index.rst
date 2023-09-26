@@ -13,11 +13,5 @@ Welcome to python-ring-doorbell's documentation!
 
 
    Home <self>
+   Contributing <contributing>
 
-.. Indices and tables
-   ==================
-
-
-.. * :ref:`genindex`
-   * :ref:`modindex`
-   * :ref:`search`
