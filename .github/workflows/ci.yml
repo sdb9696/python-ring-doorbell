@@ -7,8 +7,9 @@ on:
     branches: ["master"]
 
 env:
+  POETRY_VERSION: 1.6.1
   DEPENDENCIES_RUN: |
-          python -m pip install --upgrade pip
+          python3 -m pip install --upgrade pip
           python3 -m pip install --user pipx
           python3 -m pipx ensurepath
           pipx install poetry==1.6.1
@@ -27,7 +28,12 @@ jobs:
         with:
           python-version: "${{ matrix.python-version }}"
       - name: "Install dependencies"
-        run: $DEPENDENCIES_RUN
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install --user pipx
+          python3 -m pipx ensurepath
+          pipx install poetry==$POETRY_VERSION
+          poetry install --only tox
       - name: Lint with tox
         run: |
           poetry run tox
@@ -46,7 +52,12 @@ jobs:
         with:
           python-version: "${{ matrix.python-version }}"
       - name: "Install dependencies"
-        run: $DEPENDENCIES_RUN
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install --user pipx
+          python3 -m pipx ensurepath
+          pipx install poetry==$POETRY_VERSION
+          poetry install --only tox
       - name: Make docs with tox
         run: |
           poetry run tox
@@ -72,7 +83,12 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
-        run: $DEPENDENCIES_RUN
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install --user pipx
+          python3 -m pipx ensurepath
+          pipx install poetry==$POETRY_VERSION
+          poetry install --only tox
       - name: Prepare toxenv
         id: toxenv
         run: |
